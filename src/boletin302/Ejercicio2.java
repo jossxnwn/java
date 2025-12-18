@@ -15,30 +15,10 @@ import java.util.Scanner;
 public class Ejercicio2 {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        int numeros[] = new int[4];
-        numeros[0] = 3;
-        numeros[1] = 5;
-        numeros[2] = 7;
-        numeros[3] = 2;
-        numeros[4] = 9;
-        System.out.print("Ingresa el indice a borar en una lista de 5 numeros: ");
-        int indice = entrada.nextInt();
-        switch (indice){
-            case 1:
-                numeros[0] = 0;
-                break;
-            case 2:
-                numeros[1] = 0;
-                break;
-            case 3:
-                numeros[2] = 0;
-                break;
-            case 4:
-                numeros[3] = 0;
-                break;
-            case 5:
-                numeros[4] = 0;
-                break;
+        for(int i = 0; i <= 5 ; i++){
+            System.out.print("Ingresa que indice quieres eliminar: ");
+            int indice = entrada.nextInt();
+
         }
     }
 }
