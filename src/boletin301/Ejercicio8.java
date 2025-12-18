@@ -11,10 +11,13 @@ package boletin301;
 import java.util.Scanner;
 public class Ejercicio8 {
     public static void main(String[] args) {
-        Scanner entrada = new Scanner(System.in);
-        System.out.print("Ingresa un numero: ");
-        int numero = entrada.nextInt();
-        int div = numero;
-        while(div > numero )
+        Scanner entrda = new Scanner(System.in);
+        System.out.print("Ingresa un un numero para calcular su raiz cuadrada: ");
+        int num = entrda.nextInt();
+        double resu = 0;
+        for(int i = 0 ; i * i < num ; i ++ ){
+            resu = i;
+        }
+        System.out.println(resu);
     }
 }
