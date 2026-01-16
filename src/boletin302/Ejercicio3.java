@@ -1,12 +1,10 @@
 package boletin302;
 
-import java.util.Arrays;
-
 /**
  * Author: Josue Francis Sayritupac Izquierdo
  * Email: a25josuesi@iesantonlosada.gal
  * EmailPersonal: Josue108125@gmail.com
- * Date: 8/1/26
+ * Date: 15/1/26
  */
 /*Ejercicio 3. Crea un programa en Java que realice las siguientes acciones:
 
@@ -14,40 +12,89 @@ Crea una matriz (array bidimensional). El usuario introducirá el número de col
 A continuación, introducirá los valores columna a columna.
 Calcula el valor de la suma de cada columna. Imprime esos valores en orden con System.out.println en orden.
 Calcula el valor de la suma de cada fila. Imprime esos valores en orden con System.out.println en orden.*/
+import java.util.Scanner;
 
 import java.util.Scanner;
 
 public class Ejercicio3 {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
+        System.out.print("Introduce número de COLUMNAS: ");
+        int totalColumnas = entrada.nextInt();
+        System.out.print("Introduce número de FILAS: ");
+        int totalFilas = entrada.nextInt();
+        int[][] matriz = new int[totalFilas][totalColumnas];
+        System.out.println("--- Rellenando la matriz COLUMNA a COLUMNA ---");
+        int fila = 0;
+        int resultadoFila = 0;
+        int resultadoColumna = 0;
+        rellenarDatos(totalFilas, totalColumnas, matriz, entrada);
+        mostrarPorPantalla(totalFilas, totalColumnas, matriz);
 
-        System.out.println("Ingresa el tamaño de la matriz");
-        System.out.print("Alto (Filas): ");
-        int altura = entrada.nextInt();
-        System.out.print("Ancho (Columnas): ");
-        int anchura = entrada.nextInt();
 
-        // CORRECCIÓN 1: Primero Altura (filas), luego Anchura (columnas)
-        int[][] Matriz = new int[altura][anchura];
+//        int[][] arrayprueba = {
+//            {2,3,4,5}, // 14
+//            {4,7,8,9},
+//            {9,4,5,7}
+//        };
+//
+//        matriz = arrayprueba;
+//        totalFilas = 3;
+//        totalColumnas = 4;
 
-        // Vamos a rellenarla con algo para verla (opcional, solo visual)
-        // Por defecto en Java está llena de ceros.
 
-        System.out.println("\n--- Tu Matriz ---");
+        // Sumar los valores de cada columna
+        // Recorrido por columna
 
-        // CORRECCIÓN 2: Uso de nombres claros (i, j) o (fila, columna)
-        // El bucle externo controla las FILAS (baja verticalmente)
-        for (int i = 0; i < Matriz.length; i++) {
+        sumarValoresColumnas(totalFilas, totalColumnas, resultadoFila, matriz, resultadoColumna);
 
-            // El bucle interno controla las COLUMNAS (avanza horizontalmente)
-            for (int j = 0; j < Matriz[i].length; j++) {
-                // CORRECCIÓN 3: 'print' en lugar de 'println' para que salgan en la misma línea
-                // Agregamos un espacio " " para que no se peguen los números
-                System.out.print(Matriz[i][j] + " ");
+        // Sumar los valores de cada fila
+        // Recorrido por fila
+
+        sumarValoresFilas(totalFilas,totalColumnas, resultadoFila, matriz);
+    }
+
+    //Funciones
+    public static void sumarValoresFilas(int totalFilas, int totalColumnas, int resultadoFila, int [][] matriz) {
+        for (int f = 0 ; f < totalFilas ; f ++){
+            for (int c = 0 ; c < totalColumnas ; c++){
+                resultadoFila = resultadoFila + matriz[f][c];
             }
+            System.out.printf("Fila %d vale : %d\n", f +1 , resultadoFila);
+            resultadoFila = 0;
+        }
+    }
 
-            // Cuando terminamos una fila completa, hacemos el salto de línea
+    public static void sumarValoresColumnas(int totalFilas, int totalColumnas, int resultadoFila, int [][] matriz, int resultadoColumna) {
+        for (int c = 0; c < totalColumnas ; c++) {
+            for (int f = 0 ; f < totalFilas ; f++){
+                resultadoColumna = resultadoColumna + matriz[f][c];
+            }
+            System.out.printf("Columna %d vale : %d\n", c + 1 , resultadoColumna);
+            resultadoColumna = 0;
+        }
+    }
+
+    public static void rellenarDatos(int totalFilas, int totalColumnas, int[][] matriz, Scanner entrada) {
+        // Rellenar array con valores
+        // Recorrido por columnas
+        for (int c = 0; c < totalColumnas ; c++) {       // Bucle para COLUMNAS
+            for (int f = 0; f < totalFilas ; f++) {   // Bucle para FILAS
+                System.out.printf("Posición Fila %d, Columna %d: ", f, c);
+                matriz[f][c] = entrada.nextInt();
+            }
+        }
+    }
+
+    public static void mostrarPorPantalla(int totalFilas, int totalColumnas, int[][] matriz) {
+        // Mostrando por pantalla el array
+        // Recorrido por filas
+        for (int f = 0; f < totalFilas; f++) {
+            for(int c = 0; c< totalColumnas ; c++) {
+                System.out.print(matriz[f][c] + "\t");
+            }
             System.out.println();
         }
+
     }
 }
