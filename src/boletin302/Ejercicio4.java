@@ -24,17 +24,42 @@ public class Ejercicio4 {
         int modulos = entrada.nextInt();
         int [][] matriz = new int[estudiantes][modulos];
         rellenarDatos(estudiantes, modulos, entrada, matriz);
-
+        System.out.println("-----Menu-----");
+        System.out.println("a. Media de un alumno" );
+        System.out.println("b. Porcentaje de aprobados" );
+        int mediaAlumno = 0;
+        int alumno = 2;
+        promedioAlumnos(estudiantes,modulos,mediaAlumno,alumno , matriz);
         //Funciones
 
     }
-    private static void rellenarDatos (int estudiantes, int modulos, Scanner entrada, int [][] matriz){
-        for (int c = 0 ; c < estudiantes ; c++ ){
-            for (int f = 0 ; f < modulos ; f++ ){
-                System.out.printf("Introduce la nota del modulo %d : ", c);
-                matriz[f][c] = entrada.nextInt();
+    public static void rellenarDatos(int estudiantes, int modulos, Scanner entrada, int[][] matriz) {
+        for (int c = 0; c < estudiantes; c++) {
+            for (int f = 0; f < modulos; f++) {
+                System.out.printf("Introduce la nota del alumno %d modulo %d : ", c + 1, f + 1);
+                matriz[c][f] = entrada.nextInt();
             }
         }
     }
 
+    public static void promedioAlumnos(int estudiantes, int modulos, int alumno, int mediaAlumno, int[][] matriz) {
+        int cont = 0;
+        for (int c = 0; c < estudiantes ; c++){
+            for (int f = 0 ; f < modulos ; f++){
+                if (alumno == c){
+                    cont += 1;
+                    mediaAlumno = mediaAlumno + matriz[c][f];
+                }
+            }
+        }
+        System.out.printf("La media del alumno %d es: %d", alumno, mediaAlumno/cont+1);
+    }
+    public static void porcentajeAprobados(int estudiantes, int modulos){
+        for (int c = 0 ; c < estudiantes ; c++){
+            for (int f = 0 ; f < modulos ; f++){
+
+            }
+
+        }
+    }
 }
