@@ -1,3 +1,4 @@
+package boletin301;
 /**
  * Author: Josue Francis Sayritupac Izquierdo
  * Email: a25josuesi@iesantonlosada.gal
