@@ -50,13 +50,17 @@ public class Ejercicio4 {
                 promedioAlumno(estudiantes, modulos, alumno, mediaAlumno, matriz);
                 break;
             case 2: //Entra al porcentaje de alumnos aprobados
-                porcentajeAprobados(estudiantes, modulos, entrada, matriz);
+                System.out.print("Ingrese el indice del modulo: ");
+                int moduloIndice = entrada.nextInt();
+                porcentajeAprobadosModulo(estudiantes, modulos, entrada, matriz, moduloIndice);
                 break;
         }
     }
 
     //Funciones
     //-----------------------------------------------------------------------------------------------------|
+
+    //Funcion para el relleno de datos de una matriz
     public static void rellenarDatos(int estudiantes, int modulos, Scanner entrada, double[][] matriz) {
         for (int c = 0; c < estudiantes; c++) {
             for (int f = 0; f < modulos; f++) {
@@ -67,9 +71,11 @@ public class Ejercicio4 {
         }
     }
 
+
+    //Funcion para ver el promedio de un alumno
     public static void promedioAlumno(int estudiantes, int modulos, int alumno, double mediaAlumno, double[][] matriz) {
         int cont = 0;
-        for (int c = 0; c < estudiantes ; c++){
+        for (int c = 0; c < estudiantes ; c++){ //Recorre entre los estudiantes y el modulo sumando su media y sacando el promedio
             for (int f = 0 ; f < modulos ; f++){
                 if (alumno-1 == c){
                     cont += 1;
@@ -79,17 +85,16 @@ public class Ejercicio4 {
         }
         System.out.printf("La media del alumno %d es: %.2f", alumno, mediaAlumno/cont);
     }
-    public static void porcentajeAprobados(int estudiantes, int modulos, Scanner entrada, double[][] matriz){ //bug activo, no muestra bien los alumnos aprobados
-        System.out.print("Ingresa el índice del módulo (0-" + (modulos-1) + "): ");
-        int modulo = entrada.nextInt();
-        
-        int aprobados = 0;
-        for (int c = 0 ; c < estudiantes ; c++){
-            if (matriz[c][modulo] >= 5){
+    //Funcion para ver el porcentaje de aprobados en un modulo
+    public static void porcentajeAprobadosModulo(int estudiantes, int modulos, Scanner entrada, double[][] matriz, int moduloIndice){
+        moduloIndice = moduloIndice - 1; //El usuario indicara el modulo desde 1 y por comodidad se le resta 1 para ir con la logica
+        int aprobados = 0; 
+        for (int c = 0 ; c < estudiantes ; c++){ //Recorre en un bucle de estudiantes cogiendo exactamente el modulo requerido y comparando su nota con 5 o mas
+            if (matriz[c][moduloIndice] >= 5){
                 aprobados += 1;
             }
         }
         double porcentaje = (aprobados * 100.0) / estudiantes;
-        System.out.printf("Porcentaje de aprobados en módulo %d: %.2f%%\n", modulo+1, porcentaje);
+        System.out.printf("Porcentaje de aprobados en módulo %d: %.2f%%\n", moduloIndice+1, porcentaje);
     }
 }
