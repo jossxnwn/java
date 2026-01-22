@@ -8,3 +8,10 @@
 bin/
 out/
 .vscode/
+
+# Archivos de configuración de IntelliJ (¡No subir nunca!)
+.idea/
+*.iml
+out/
+target/
+*.class
